@@ -21,8 +21,8 @@ function draw(){
    var posy = floor(touches[i].y)
    fill(155,30,55);
  textSize(40);
- text("posx" + posx, touches[i].x, 75, touches[i].y - 25);
-  text("posy" + posy, touches[i].x, 75, touches[i].y + 50);
+ text("posx" + posx, touches[i].x + 75, touches[i].y - 25);
+  text("posy" + posy, touches[i].x + 75, touches[i].y + 50);
   
 }
 endShape(CLOSE);
