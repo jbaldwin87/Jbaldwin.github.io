@@ -11,7 +11,7 @@ function setup() {
 }
 
 function draw(){
- background(155);
+ background(255);
  
  beginShape();
  for(var i=0;i<touches.length;i++){
