@@ -11,17 +11,20 @@ function setup() {
 }
 
 function draw(){
- background(255);
+ background(155);
  
+ beginShape();
  for(var i=0;i<touches.length;i++){
-  rect(touches[i].x,touches[i].y,150,150);
-  }
-  function touchStarted() {
- background(255);
+   ellipse(touches[i].x,touches[i].y,150,150);
+   vertex(touches[i].x,touches[i].y);
+   var posx = floor(touches[i].x)
+   var posy = floor(touches[i].x)
  textSize(40);
- text(touches[0].x, 100, 100);
- text(touches[0].y, 200, 100);
+ text("posX"+posx, touches[i].x, 75, touches[i].y - 25);
+  text("posY"+posy, touches[i].x, 75, touches[i].y + 50);
+  
 }
+endShape(CLOSE);
 }
 
 
