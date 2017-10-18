@@ -1,27 +1,44 @@
-var x = 0;
-var y = 0;
-
-var Vx = 0;
-var Vy = 0;
-
-var Xx = 0;
-var Xy = 0;
-
-var Multix = 0;
-var Multiy = 0;
+var ax, ay, vx, vy, px, py, vMultiplier, s;
+var value;
 
 function setup() {
- createCanvas(windowWidth,windowHeight); 
+  createCanvas(windowWidth, windowHeight);
+  value = 0;
+  vMultiplier = 0.05;
+  ax = 0;
+  ay = 0;
+  vx = 0;
+  vy = 0;
+  px = windowWidth / 2;
+  py = windowHeight / 2;
+  s = 100;
 }
 
 function draw() {
- background(255);
- textSize(40);
- text("Rx: " + rotationX, 100, 100);
- text("Ry: " + rotationY, 100, 150);
- text("Rz: " + rotationZ, 100, 200);
-
+  background(value, 255, 0);
+  textSize(40);
+  text("Rx: " + floor(rotationX), 100, 100);
+  text("Ry: " + (rotationY), 100, 150);
+  text("Rz: " + rotationZ, 100, 200);
+  Marble();
 }
-function touchStarted() {
- background(random(0,255),random(0,255),random(0,255));
+
+function deviceShaken() {
+  value = value + 5;
+  if (value > 255) {
+    value = 0;
+  }
+}
+
+function Marble() {
+  ax = rotationY * vMultiplier;
+  vx += ax;
+  px += vx;
+  ay = rotationX * vMultiplier;
+  vy += ay;
+  py += vy;
+  fill(0);
+  ellipse(px, py, s, s);
+  fill(100);
+  ellipse(px+15, py+15, s/2, s/2);
 }
