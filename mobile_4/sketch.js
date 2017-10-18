@@ -1,15 +1,27 @@
+var obstacles = [];
+
 function setup() {
- createCanvas(windowWidth,windowHeight); 
+ createCanvas(windowWidth, windowHeight);
+ for (var i=0; i < 1000; i++) {
+  obstacles[i] = new Obstacle("malus");
+ }
 }
 
 function draw() {
- background(255);
- textSize(40);
- text("Rx: " + rotationX, 100, 100);
- text("Ry: " + rotationY, 100, 150);
- text("Rz: " + rotationZ, 100, 200);
-
+ for (var i=0; i < 1000; i++) {
+  obstacles[i].display();
+ }
 }
-function touchStarted() {
- background(random(0,255),random(0,255),random(0,255));
+
+function Obstacle(genre) {
+ this.type = genre;
+ this.x = random(0, windowWidth);
+ this.y = random(0, windowHeight);
+ this.size = random(20, 50);
+ this.couleur = color(random(0, 255), random(0, 255), random(0, 255));
+
+ this.display = function() {
+  fill(this.couleur);
+  ellipse(this.x, this.y, this.size, this.size);
+  }
 }
